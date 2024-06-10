@@ -23,6 +23,7 @@ int solution(int bridge_length, int weight, vector<int> truck_weights) {
             cnt++;
         }
         
+        
         if(weight < sum + truck_weights[index]){
             q.push(0);
             continue;
