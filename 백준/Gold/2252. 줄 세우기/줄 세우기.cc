@@ -29,8 +29,7 @@ int main(){
         q.pop();
         for (int i = 0; i < v[x].size(); i++) {
             int nx = v[x][i];
-            if(cnt[nx] != 1) {
-                cnt[nx]--;
+            if(--cnt[nx] != 0) {
                 continue;
             }
             q.push(nx);
