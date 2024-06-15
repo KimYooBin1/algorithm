@@ -18,21 +18,16 @@ int main(){
         v[a].push_back(b);
         cnt[b]++;
     }
-    queue<int> q;
+    priority_queue<int, vector<int>, greater<int>> q;
     for (int i = 1; i <= n; i++) {
         if(!cnt[i]){
             check[i] = 1;
-        }
-    }
-    for(int i=1;i<=n;i++){
-        if(check[i] == 1){
             q.push(i);
-            check[i] = 2;
-            break;
         }
     }
+
     while(!q.empty()){
-        int x = q.front();
+        int x = q.top();
         cout << x << " ";
         q.pop();
         for (int j = 0; j < v[x].size(); j++) {
@@ -40,13 +35,7 @@ int main(){
             if(check[nx]) continue;
             if(--cnt[nx] != 0) continue;
             check[nx] = 1;
-        }
-        for (int i = 1; i <= n; i++) {
-            if(check[i] == 1){
-                q.push(i);
-                check[i] = 2;
-                break;
-            }
+            q.push(nx);
         }
     }
     return 0;
