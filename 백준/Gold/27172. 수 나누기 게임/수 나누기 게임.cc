@@ -22,13 +22,14 @@ int main(){
     }
     int max_element = *std::max_element(v.begin(), v.end());
     for (int i = 1; i <= max_element; i++) {
-        //소수가 아님
+        //해당 수는 알아볼 필요가 없다
+        if(m.find(i) == m.end()) continue;
 //        if(check[i]) continue;
 //        cout << i << "\n";
         for (int j = i * 2; j <= max_element; j += i) {
             // 양 숫자가 모두 v에 존재할때
 //            cout << i << " " << j << "\n";
-            if (m.find(i) != m.end() && m.find(j) != m.end()) {
+            if (m.find(j) != m.end()) {
                 m[i]++;
                 m[j]--;
             }
