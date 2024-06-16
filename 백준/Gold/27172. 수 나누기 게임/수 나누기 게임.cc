@@ -16,8 +16,6 @@ int main(){
     map<int, int> m;
     for (int i = 0; i < n; i++) {
         cin >> v[i];
-    }
-    for (int i = 0; i < n; i++) {
         m[v[i]] = 0;
     }
     int max_element = *std::max_element(v.begin(), v.end());
