@@ -9,7 +9,7 @@ int arr[MAX_SIZE];
 int dist[MAX_SIZE];
 int g_size[MAX_SIZE];
 int g_value[MAX_SIZE];
-int result[MAX_SIZE][3001];
+int result[3001];
 int main() {
     FIO;
     int n, m, k;
@@ -46,12 +46,11 @@ int main() {
     }
     int out = 0;
     for (int i = 1; i < g; i++) {
-        for (int j = 1; j < k; j++) {
-            result[i][j] = result[i-1][j];
-            if(0<=j-g_size[i]){
-                result[i][j] = max(result[i][j], result[i-1][j - g_size[i]] + g_value[i]);
-            }
-            out = max(out, result[i][j]);
+        for (int j = k-1; 0<j; j--) {
+            if(j - g_size[i] < 0) continue;
+            result[j] = max(result[j], result[j - g_size[i]] + g_value[i]);
+
+            out = max(out, result[j]);
         }
     }
     cout << out << "\n";
