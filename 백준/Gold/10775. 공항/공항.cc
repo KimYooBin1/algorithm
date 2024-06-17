@@ -5,7 +5,6 @@
 using namespace std;
 int arr[MAX_SIZE];
 int next_gate[MAX_SIZE];
-int g_size[MAX_SIZE];
 int find(int x) {
 	if (next_gate[x] == x) return x;
 	return next_gate[x] = find(next_gate[next_gate[x]]);
@@ -14,7 +13,6 @@ void U(int x, int y) {
 	int nx = find(x);
 	int ny = find(y);
 	if (nx == ny) return;
-	if (ny > nx) swap(nx, ny);
 	next_gate[nx] = ny;
 }
 int main() {
