@@ -19,8 +19,8 @@ int U(int x, int y){
     parent[nx] = ny;
     return nx;
 }
-int up_bound(int s, int e, int target, vector<int> v){
-    int result = e;
+int up_bound(int s, int e, int target, vector<int> &v){
+//    int result = e;
     while(s<e) {
         int m = (s + e) / 2;
         //찾는값이 더 크다.
@@ -29,10 +29,10 @@ int up_bound(int s, int e, int target, vector<int> v){
         }
         else{
             e = m;
-            result = m;
+//            result = m;
         }
     }
-    return result;
+    return e;
 }
 int main(){
     FIO;
@@ -50,8 +50,8 @@ int main(){
 
     for (int i = 0; i < k; i++) {
         cin >> num;
-//        int index = up_bound(0, v.size(), num, v);
-        int index = upper_bound(v.begin(), v.end(), num) - v.begin();
+        int index = up_bound(0, v.size(), num, v);
+//        int index = upper_bound(v.begin(), v.end(), num) - v.begin();
         int next_index = find(index);
 
 //        cout << "index : " << next_index << "\n";
