@@ -1,32 +1,46 @@
-#include<cstring>
-#include<iostream>
-#include<climits>
-#define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
-#define MAX_SIZE 2501
+#include <iostream>
 using namespace std;
-int dist[MAX_SIZE][MAX_SIZE];
-string str;
-bool check(int a, int b){
-    while(a<b){
-        if (str[a++] != str[b--]) return false;
-    }
-    return true;
-}
-int dp(int s, int e) {
-    if(s == e) return dist[s][e] = 1;
-    if(dist[s][e] != -1) return dist[s][e];
-    if (check(s, e)) return dist[s][e] = 1;
-    int result = INT_MAX;
-    for (int i = s; i < e; i++) {
-        if(!check(s, i)) continue;
-        result = min(result, dp(s, i) + dp(i + 1, e));
-    }
-    return dist[s][e] = result;
-}
-int main(){
-    FIO;
-    cin>>str;
-    memset(dist, -1, sizeof(dist));
-    cout << dp(0, str.length() - 1) << "\n";
 
+//팬린드 행 : 시작 문자열, 열 : 끝나는 문자열
+int dp[2502][2502];
+string str;
+
+bool isPalindrome(int l, int r) {
+	while (l <= r) {
+		//첫 구간과 끝 구간이 다르다면
+		if (str[l] != str[r]) {
+			return false;
+		}
+		l++; r--;
+	}
+	return true;
+}
+
+int calcDP(int r, int c) {
+	if (r > c) return dp[r][c] = 0;
+	if (r == c) return dp[r][c] = 1;
+	if (dp[r][c] != 0) return dp[r][c];
+	
+	int& ret = dp[r][c];
+	ret = 987654321;
+	for (int i = r; i <= c; i++) {
+		if (isPalindrome(r, i)) {
+			int cnt = 1;
+			cnt += calcDP(i + 1, c);
+			ret = min(cnt, ret);
+		}
+	}
+	return ret;
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+
+	cin >> str;
+
+	calcDP(0, str.size() - 1);
+
+	cout << dp[0][str.size() - 1] << "\n";
 }
