@@ -8,13 +8,12 @@ int main(){
     int t;
     std::cin >> t;
     while (t--) {
-        int n;
+        int n, tmp;
         std::cin >> n;
-        ll arr[n];
         std::stack<int> s;
         for (int i = 0; i < n; i++) {
-            std::cin >> arr[i];
-            s.push(arr[i]);
+            std::cin >> tmp;
+            s.push(tmp);
         }
         ll result = 0;
         int max_price = s.top(); s.pop();
