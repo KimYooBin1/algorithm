@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#define FIO ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
 
 bool check(string str){
@@ -12,6 +13,7 @@ bool check(string str){
 }
 
 int main() {
+    FIO;
     int n;
     cin >> n;
     vector<string> v(n);
