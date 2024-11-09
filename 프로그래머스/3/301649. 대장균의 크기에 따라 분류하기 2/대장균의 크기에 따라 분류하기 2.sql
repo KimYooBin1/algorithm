@@ -1,15 +1,9 @@
-with temp as (
-    select id, PERCENT_RANK() over (order by size_of_colony desc) rate
-    from ecoli_data
-)
-select id, (
-    case when 0 <= rate and rate < 0.25 then "CRITICAL" else 
-        case when rate < 0.5 then "HIGH" else
-            case when rate < 0.75 then "MEDIUM" else "LOW"
-            end
-        end
-    end
-) colony_name
-from ecoli_data
-join temp using (id)
-order by id;
+SELECT A.ID, IF(PCT <= 0.25, 'CRITICAL',
+             IF(PCT <= 0.5, 'HIGH',
+               IF(PCT <= 0.75, 'MEDIUM','LOW'))) AS COLONY_NAME
+FROM ECOLI_DATA A
+JOIN (SELECT ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS PCT
+FROM ECOLI_DATA
+) B
+ON A.ID = B.ID
+ORDER BY A.ID
