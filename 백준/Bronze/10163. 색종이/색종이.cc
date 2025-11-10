@@ -9,7 +9,7 @@ int main(){
     FIO;
     int n;
     cin>>n;
-    int map[102][102];
+    int map[1002][1002];
     memset(map, -1, sizeof(map));
     for (int i = 0; i < n; i++) {
         int a, b, A, B;
@@ -22,8 +22,8 @@ int main(){
     }
     for (int index = 0; index < n; index++) {
         int result = 0;
-        for (int i = 0; i < 101; i++) {
-            for (int j = 0; j < 101; j++) {
+        for (int i = 0; i < 1001; i++) {
+            for (int j = 0; j < 1001; j++) {
 //                cout<<map[i][j]<<" ";
                 if(map[i][j] == index) result++;
             }
