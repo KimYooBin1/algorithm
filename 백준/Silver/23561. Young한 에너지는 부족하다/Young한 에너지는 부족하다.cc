@@ -3,7 +3,9 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
+#define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
 int main(){
+    FIO;
     int n;
     cin >> n;
     vector<int> v(n * 3);
