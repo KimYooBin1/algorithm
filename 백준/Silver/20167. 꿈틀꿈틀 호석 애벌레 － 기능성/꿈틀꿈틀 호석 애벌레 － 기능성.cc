@@ -22,10 +22,11 @@ int main() {
                 break;
             }
         }
+//        if(next_i[i] == -1) next_i[i] = i;
     }
 
     vector<int> energy(n, 0);
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n; i++) {
         int next_index = next_i[i];
         int sum = 0;
         for (int j = i; j <= next_index; j++) {
@@ -36,11 +37,11 @@ int main() {
 
 
     vector<int> dp(n + 1, 0);
+//    dp[0] = max(0, energy[0]);
     for (int i = 0; i < n; i++) {
-        if(n >= i + 1){
-            dp[i + 1] = max(dp[i + 1], dp[i]);
-        }
-        if(n >= next_i[i] + 1){
+        dp[i + 1] = max(dp[i + 1], dp[i]);
+
+        if(n >= next_i[i] + 1 && next_i[i] != -1){
             dp[next_i[i] + 1] = max(dp[next_i[i] + 1], dp[i] + energy[i]);
         }
     }
