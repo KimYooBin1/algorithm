@@ -21,10 +21,15 @@ int main(){
         }
     }
     int result = 0;
+    vector<vector<int>> u(N, vector<int>(N));
     while(true){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                u[i][j] = 0;
+            }
+        }
         bool check = true;
         int index = 1;
-        vector<vector<int>> u(N, vector<int>(N, 0));
 //        map<int, int> u_size;
 //        map<int, int> u_sum;
         for (int i = 0; i < N; i++) {
