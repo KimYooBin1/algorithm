@@ -37,7 +37,6 @@ int main(){
     FIO;
     int n, m, r;
     cin >> n >> m >> r;
-//    r %= 2*n + 2*m;
     vector<vector<int>> map(n, vector<int> (m));
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -49,7 +48,9 @@ int main(){
     // 내부로 얼마나 들어가야하는지
     for (int dep = 0; dep < repeat; dep++) {
         // 몇번 회전하는지
-        for(int rot = 0; rot < r; rot++){
+        int tmp_r = r % (2 * (n - 2 * dep) + 2 * (m - 2 * dep) - 4);
+//        cout << tmp_r << "\n";
+        for(int rot = 0; rot < tmp_r; rot++){
             int x = dep; int y = dep;
             int tmp = map[x][y];
             int k = 0;
