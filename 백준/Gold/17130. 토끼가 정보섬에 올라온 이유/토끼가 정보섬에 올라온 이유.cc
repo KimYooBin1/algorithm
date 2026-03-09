@@ -27,10 +27,8 @@
  */
 #include<cstring>
 #include<iostream>
-#include<queue>
 #include<vector>
 #include<algorithm>
-#include<tuple>
 using namespace std;
 #define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
 int dx[3] = {1, 0, -1};
@@ -40,8 +38,8 @@ int main(){
     int n, m;
     cin >> n >> m;
     vector<vector<char>> map(n, vector<char>(m));
-    vector<vector<int>> carrot(n, vector<int>(m, -1));
-    vector<int> result;
+    vector<vector<int>> result(n, vector<int>(m, -1));
+//    vector<int> r;
     int x, y;
     for (int i = 0; i < n; i++) {
         string str;
@@ -51,32 +49,30 @@ int main(){
             if(map[i][j] == 'R') x = i, y = j;
         }
     }
-    queue<pair<int,int>> q;
-    q.push({x, y});
-    carrot[x][y] = 0;
-    while (!q.empty()) {
-        tie(x, y) = q.front(); q.pop();
-        for (int i = 0; i < 3; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-            if(nx < 0 || ny < 0 || n <= nx || m <= ny) continue;
-            if(map[nx][ny] == '#') continue;
-            if(map[nx][ny] == 'C'){
-                if(carrot[nx][ny] < carrot[x][y] + 1) {
-                    q.push({nx, ny});
-                    carrot[nx][ny] = carrot[x][y] + 1;
-                }
-            }else{
-                if(carrot[nx][ny] < carrot[x][y]) {
-                    q.push({nx, ny});
-                    carrot[nx][ny] = carrot[x][y];
-                }
-            }
 
-            if(map[nx][ny] == 'O') result.push_back(carrot[nx][ny]);
-//            q.push({nx, ny});
+    // 시작점 설정
+    result[x][y] = 0;
+    for (int j = 0; j < m - 1; j++) {
+        for (int i = 0; i < n; i++) {
+            // 토끼의 시작점도 아님
+            if(result[i][j] == -1) continue;
+//            if(map[i][j] == 'O') r.push_back(result[i][j]);
+            // 벽이면 통과
+//            if(map[i][j] == '#') continue;
+//            if (m <= j + 1) continue;
+            for (int z = -1; z < 2; z++) {
+                if (i + z < 0 || n <= i + z) continue;
+                if(map[i+z][j+1] == '#') continue;
+                if(map[i+z][j+1] == 'C') result[i + z][j + 1] = max(result[i + z][j + 1], result[i][j] + 1);
+                else result[i + z][j + 1] = max(result[i + z][j + 1], result[i][j]);
+            }
         }
     }
-    if(result.empty()) cout<<-1<<"\n";
-    else cout << *max_element(result.begin(), result.end()) << "\n";
+    int r = -1;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if(map[i][j] == 'O') r = max(r, result[i][j]);
+        }
+    }
+    cout << r <<"\n";
 }
