@@ -48,14 +48,9 @@ bool U(int x, int y){
     // 이미 같은 그룹임
     if (p_x == p_y) return true;
 
-    if (g_size[p_x] < g_size[p_y]) {
-        parent[p_y] = parent[p_x];
-        g_size[p_y] += g_size[p_x];
-    }
-    else {
-        parent[p_x] = parent[p_y];
+    if (g_size[p_x] < g_size[p_y]) swap(p_x, p_y);
+        parent[p_y] = p_x;
         g_size[p_x] += g_size[p_y];
-    }
     return false;
 }
 int find1(int x) {
@@ -68,16 +63,9 @@ bool U1(int x, int y){
     // 이미 같은 그룹임
     if (p_x == p_y) return true;
 
-    if (g_size1[p_x] < g_size1[p_y]) {
-        parent1[p_y] = parent1[p_x];
-        g_size1[p_y] += g_size1[p_x];
-    }
-    else {
-        parent1[p_x] = parent1[p_y];
-        g_size1[p_x] += g_size1[p_y];
-    }
-
-    parent1[p_x] = parent1[p_y];
+    if (g_size1[p_x] < g_size1[p_y]) swap(p_x, p_y);
+    parent1[p_y] = p_x;
+    g_size1[p_x] += g_size1[p_y];
     return false;
 }
 
@@ -129,7 +117,4 @@ int main() {
     // cout << result << " " << result1 << "\n";
 
     cout << pow(n - result, 2) - pow(n - result1, 2) << "\n";
-
-
-
 }
