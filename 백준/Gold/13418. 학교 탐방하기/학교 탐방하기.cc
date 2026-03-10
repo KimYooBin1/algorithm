@@ -1,0 +1,135 @@
+/*
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⣀⣀⡤⠤⠖⠖⠖⠦⢤⠤⠲⠲⠲⠲⠦⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⠖⠊⠋⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡰⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⡴⠊⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣄⠀⠀⠀⠀⠀⡗⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⡔⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⡶⢤⠤⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⡀⠀⠀⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣻⡏⠀⠀⠈⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢸⡁⠀⠀⠀⠀⠀⢐⡇⠀⠀⠀⠀⢀⣠⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⢺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠘⡆⠀⠀⠀⠀⠀⡼⠀⠀⠀⠀⠀⢸⣯⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠻⣄⣀⣀⡤⡞⠁⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠁⠀⠸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠀⠀⠀⣀⡴⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⢤⢤⣺⠴⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠦⣤⣀⡀⠀⠀⠀⠀⢀⣀⣄⣿⡾⠾⠋⠋⠱⡄⡯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠉⠛⠛⠋⠋⠉⠉⠈⠀⠀⠀⠀⠀⣸⢣⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡄⠀⢐⡇⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠲⡞⠀⠀⠀⠀⠀⠀⠀⠀⣠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠶⠴⠴⣆⠀⣴⡀⡯⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠀⠉⠀⠀⠀
+*/
+
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<queue>
+#include<tuple>
+using namespace std;
+#define FIO ios_base::sync_with_stdio(0); cin.tie(0);
+
+vector<int> parent(1002);
+vector<int> g_size(1002, 1);
+vector<int> parent1(1002);
+vector<int> g_size1(1002, 1);
+
+int find(int x) {
+    if (parent[x] == x) return x;
+    return parent[x] = find(parent[x]);
+}
+bool U(int x, int y){
+    int p_x = find(x);
+    int p_y = find(y);
+
+    // 이미 같은 그룹임
+    if (p_x == p_y) return true;
+
+    if (g_size[p_x] < g_size[p_y]) {
+        parent[p_y] = parent[p_x];
+        g_size[p_y] += g_size[p_x];
+    }
+    else {
+        parent[p_x] = parent[p_y];
+        g_size[p_x] += g_size[p_y];
+    }
+    return false;
+}
+int find1(int x) {
+    if (parent1[x] == x) return x;
+    return parent1[x] = find1(parent1[x]);
+}
+bool U1(int x, int y){
+    int p_x = find1(x);
+    int p_y = find1(y);
+    // 이미 같은 그룹임
+    if (p_x == p_y) return true;
+
+    if (g_size1[p_x] < g_size1[p_y]) {
+        parent1[p_y] = parent1[p_x];
+        g_size1[p_y] += g_size1[p_x];
+    }
+    else {
+        parent1[p_x] = parent1[p_y];
+        g_size1[p_x] += g_size1[p_y];
+    }
+
+    parent1[p_x] = parent1[p_y];
+    return false;
+}
+
+
+int main() {
+    FIO;
+
+    int n, m;
+    cin >> n >> m;
+
+    for (int i=0;i<=n;i++) {
+        parent[i] = i;
+        parent1[i] = i;
+    }
+
+    priority_queue<tuple<int,int,int>> pq;
+
+    priority_queue<tuple<int,int,int>> pq1;
+    for (int i = 0; i <= m; i++) {
+        int from, to, value;
+        cin>>from>>to>>value;
+        pq.push({-value, from, to});
+        pq1.push({value, from, to});
+    }
+    // vector<bool> visit(n + 1, false);
+    int result = 0;
+    while (!pq.empty()) {
+        int x, y, value;
+        tie(value, x, y) = pq.top(); pq.pop();
+        if (U(x, y)) continue;
+        result += - value;
+        // cout<<x<<" "<<y<<"\n";
+    }
+
+    // cout << result << "\n";
+    // cout << "-" << "\n";
+
+
+    int result1 = 0;
+    while (!pq1.empty()) {
+        int x, y, value;
+        tie(value, x, y) = pq1.top(); pq1.pop();
+        // cout<<x<<" "<<y<<".\n";
+        if (U1(x, y)) continue;
+        result1 += value;
+        // cout<<x<<" "<<y<<"\n";
+    }
+
+    // cout << result << " " << result1 << "\n";
+
+    cout << pow(n - result, 2) - pow(n - result1, 2) << "\n";
+
+
+
+}
