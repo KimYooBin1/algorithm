@@ -25,7 +25,6 @@
 
 #include<cstring>
 #include<iostream>
-#include<algorithm>
 #include<vector>
 using namespace std;
 #define FIO ios_base::sync_with_stdio(0); cin.tie(0);
@@ -33,33 +32,20 @@ int main() {
     FIO;
     int n, t_score, p;
     cin >> n >> t_score >> p;
-    if (!n) {
-        cout<<1<<"\n";
-        return 0;
-    }
-    vector<int> v(p + 1, -1);
+    vector<int> v(n + 1);
     for (int i = 0; i < n; i++) {
         cin >> v[i];
     }
-    v[n] = t_score;
-    sort(v.begin(), v.end());
-    reverse(v.begin(), v.end());
-    int pre_score = v[0];
-    int count = 1;
-    int rank = 1;
-    for (int i = 1; i <= p; i++) {
-        // cout<<pre_score<<" "<<count<<" "<<rank<<" "<<v[i]<<"\n";
-        if (pre_score == v[i]) count++;
-        else if (pre_score > v[i]) {
-            if (t_score > v[i]) {
-                cout<<rank<<"\n";
-                return 0;
-            }
-            rank += count;
-            count = 1;
-        }
-        pre_score = v[i];
+    int a = 0;
+    int b = 1;
+    for (int i = 0; i < n; i++) {
+        if (t_score <= v[i]) a++;
+        if (t_score < v[i]) b++;
     }
-    cout << -1 << "\n";
+    if (a < p) {
+        cout << b << "\n";
+    } else {
+        cout << -1 << "\n";
+    }
 
 }
